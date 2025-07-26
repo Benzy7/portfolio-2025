@@ -1,7 +1,17 @@
-import { skills } from '@/data/skills';
+import { SkillCategory } from '@prisma/client';
+import { useEffect, useState } from 'react';
 
 export default function Skills() {
-    return (
+  const [skills, setSkills] = useState<SkillCategory[]>([]);
+
+  useEffect(() => {
+    fetch('/api/skills')
+      .then((res) => res.json())
+      .then((data) => setSkills(data))
+      .catch((err) => console.error('Failed to load skills:', err));
+  }, []);
+
+  return (
         <section id="skills" className="py-20">
             <div className="container mx-auto px-4">
                 <h2 className="text-3xl font-bold mb-12 text-center">Technical Skills</h2>

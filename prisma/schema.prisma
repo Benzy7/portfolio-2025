@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model SkillCategory {
+  id     Int      @id @default(autoincrement())
+  name   String
+  skills String[]
+
+  @@map("skill_category")
+}
+
+model Project {
+  id           Int      @id @default(autoincrement())
+  title        String
+  description  String
+  tech         String[]
+  github       String?
+  demo         String?
+  backendFocus Boolean?
+
+  @@map("project")
+}
+
+model Experience {
+  id          Int      @id @default(autoincrement())
+  company     String
+  position    String
+  period      String
+  location    String
+  description String[]
+  skills      String[]
+
+  @@map("experience")
+}

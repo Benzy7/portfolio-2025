@@ -1,7 +1,17 @@
-import { projects } from '@/data/projects';
+import { Project } from '@prisma/client';
+import { useEffect, useState } from 'react';
 import { FiGithub, FiExternalLink } from 'react-icons/fi';
 
 export default function Projects() {
+    const [projects, setProjects] = useState<Project[]>([]);
+
+    useEffect(() => {
+        fetch('/api/projects')
+            .then((res) => res.json())
+            .then((data) => setProjects(data))
+            .catch((err) => console.error('Failed to load Projects:', err));
+    }, []);
+
     return (
         <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800">
             <div className="container mx-auto px-4">

@@ -5,9 +5,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
     res.status(200).json({
         status: 'active',
-        services: ['PostgreSQL', 'Redis', 'AWS', 'Docker', 'Node.js'],
         uptime: `${uptimeHours} hours`,
         server: 'VPS1',
-        message: 'Backend systems operational'
+        message: 'Systems operational'
     });
 }

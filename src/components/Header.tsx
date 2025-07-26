@@ -80,7 +80,7 @@ export default function Header() {
 
                 {/* Mobile Menu Button */}
                 <div className="md:hidden flex items-center space-x-4">
-                    {mounted && (
+                    {/* {mounted && (
                         <button
                             onClick={toggleTheme}
                             className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700"
@@ -88,7 +88,7 @@ export default function Header() {
                         >
                             {resolvedTheme === 'dark' ? <FiSun size={20} /> : <FiMoon size={20} />}
                         </button>
-                    )}
+                    )} */}
                     <button
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700"

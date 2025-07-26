@@ -1,6 +1,16 @@
-import { experiences } from '@/data/experience';
+import { Experience as Exp } from '@prisma/client';
+import { useEffect, useState } from 'react';
 
 export default function Experience() {
+    const [experiences, setExperiences] = useState<Exp[]>([]);
+
+    useEffect(() => {
+        fetch('/api/experiences')
+            .then((res) => res.json())
+            .then((data) => setExperiences(data))
+            .catch((err) => console.error('Failed to load experiences:', err));
+    }, []);
+
     return (
         <section id="experience" className="py-20 bg-white dark:bg-gray-900">
             <div className="container mx-auto px-4">
