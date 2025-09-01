@@ -68,6 +68,11 @@ export default function Hero() {
 
             <div className="container mx-auto px-4 relative z-10 pt-16">
                 <div className="max-w-3xl backdrop-blur-sm bg-white/70 dark:bg-gray-900/70 p-8 rounded-2xl shadow-xl">
+                    <div className="flex items-center mb-4">
+                        <div className="w-3 h-3 bg-green-500 rounded-full mr-3 animate-pulse"></div>
+                        <span className="text-sm text-gray-600 dark:text-gray-400">Available for new opportunities</span>
+                    </div>
+                    
                     <h1 className="text-4xl md:text-6xl font-bold mb-6">
                         Hi, I'm <span className="text-blue-600">Khoubaib Benzayed</span>
                         <br />
@@ -86,13 +91,13 @@ export default function Hero() {
                     <div className="flex flex-wrap gap-4">
                         <a
                             href="#projects"
-                            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors shadow-lg hover:shadow-blue-500/20"
+                            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors shadow-lg hover:shadow-blue-500/20 transform hover:scale-105"
                         >
                             View Projects
                         </a>
                         <a
                             href="#contact"
-                            className="border border-gray-300 dark:border-gray-700 hover:border-blue-600 px-6 py-3 rounded-lg font-medium transition-colors"
+                            className="border border-gray-300 dark:border-gray-700 hover:border-blue-600 px-6 py-3 rounded-lg font-medium transition-colors hover:bg-gray-50 dark:hover:bg-gray-800"
                         >
                             Contact Me
                         </a>
@@ -103,6 +108,12 @@ export default function Hero() {
                         >
                             Download CV
                         </a>
+                    </div>
+                    
+                    <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                            Currently exploring: <span className="font-medium">AI/ML integration & emerging web technologies</span>
+                        </p>
                     </div>
                 </div>
             </div>

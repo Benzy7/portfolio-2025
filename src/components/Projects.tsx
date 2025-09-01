@@ -4,13 +4,51 @@ import { FiGithub, FiExternalLink } from 'react-icons/fi';
 
 export default function Projects() {
     const [projects, setProjects] = useState<Project[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         fetch('/api/projects')
-            .then((res) => res.json())
-            .then((data) => setProjects(data))
-            .catch((err) => console.error('Failed to load Projects:', err));
+            .then((res) => {
+                if (!res.ok) throw new Error('Failed to fetch projects');
+                return res.json();
+            })
+            .then((data) => {
+                setProjects(data);
+                setLoading(false);
+            })
+            .catch((err) => {
+                console.error('Failed to load Projects:', err);
+                setError(err.message);
+                setLoading(false);
+            });
     }, []);
+
+    if (loading) {
+        return (
+            <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800">
+                <div className="container mx-auto px-4">
+                    <h2 className="text-3xl font-bold mb-12 text-center">Projects</h2>
+                    <div className="flex justify-center">
+                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                    </div>
+                </div>
+            </section>
+        );
+    }
+
+    if (error) {
+        return (
+            <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800">
+                <div className="container mx-auto px-4">
+                    <h2 className="text-3xl font-bold mb-12 text-center">Projects</h2>
+                    <div className="text-center text-red-600">
+                        <p>Failed to load projects. Please try again later.</p>
+                    </div>
+                </div>
+            </section>
+        );
+    }
 
     return (
         <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800">
@@ -21,7 +59,7 @@ export default function Projects() {
                     {projects.map((project, index) => (
                         <div
                             key={index}
-                            className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden shadow-lg"
+                            className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
                         >
                             <div className="p-6">
                                 <div className="flex justify-between items-start mb-4">

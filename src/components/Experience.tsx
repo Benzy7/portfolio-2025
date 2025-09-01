@@ -3,13 +3,51 @@ import { useEffect, useState } from 'react';
 
 export default function Experience() {
     const [experiences, setExperiences] = useState<Exp[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         fetch('/api/experiences')
-            .then((res) => res.json())
-            .then((data) => setExperiences(data))
-            .catch((err) => console.error('Failed to load experiences:', err));
+            .then((res) => {
+                if (!res.ok) throw new Error('Failed to fetch experiences');
+                return res.json();
+            })
+            .then((data) => {
+                setExperiences(data);
+                setLoading(false);
+            })
+            .catch((err) => {
+                console.error('Failed to load experiences:', err);
+                setError(err.message);
+                setLoading(false);
+            });
     }, []);
+
+    if (loading) {
+        return (
+            <section id="experience" className="py-20 bg-white dark:bg-gray-900">
+                <div className="container mx-auto px-4">
+                    <h2 className="text-3xl font-bold mb-12 text-center">Professional Experience</h2>
+                    <div className="flex justify-center">
+                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                    </div>
+                </div>
+            </section>
+        );
+    }
+
+    if (error) {
+        return (
+            <section id="experience" className="py-20 bg-white dark:bg-gray-900">
+                <div className="container mx-auto px-4">
+                    <h2 className="text-3xl font-bold mb-12 text-center">Professional Experience</h2>
+                    <div className="text-center text-red-600">
+                        <p>Failed to load experience data. Please try again later.</p>
+                    </div>
+                </div>
+            </section>
+        );
+    }
 
     return (
         <section id="experience" className="py-20 bg-white dark:bg-gray-900">

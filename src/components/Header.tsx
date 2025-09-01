@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
-import { FiMoon, FiSun, FiMenu, FiX } from 'react-icons/fi';
-import useThemeSwitch from '@/hooks/useThemeSwitch';
+import { FiMenu, FiX } from 'react-icons/fi';
 import { useRouter } from 'next/router';
+import ThemeToggle from './ThemeToggle';
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const { mounted, resolvedTheme, toggleTheme } = useThemeSwitch();
     const router = useRouter();
 
     useEffect(() => {
@@ -20,6 +19,7 @@ export default function Header() {
 
     const navItems = [
         { name: 'Home', href: '#home' },
+        { name: 'About', href: '#about' },
         { name: 'Experience', href: '#experience' },
         { name: 'Projects', href: '#projects' },
         { name: 'Skills', href: '#skills' },
@@ -67,28 +67,12 @@ export default function Header() {
                         ))}
                     </ul>
 
-                    {/* {mounted && (
-                        <button
-                            onClick={toggleTheme}
-                            className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
-                            aria-label="Toggle theme"
-                        >
-                            {resolvedTheme === 'dark' ? <FiSun size={20} /> : <FiMoon size={20} />}
-                        </button>
-                    )} */}
+                    <ThemeToggle />
                 </nav>
 
                 {/* Mobile Menu Button */}
                 <div className="md:hidden flex items-center space-x-4">
-                    {/* {mounted && (
-                        <button
-                            onClick={toggleTheme}
-                            className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700"
-                            aria-label="Toggle theme"
-                        >
-                            {resolvedTheme === 'dark' ? <FiSun size={20} /> : <FiMoon size={20} />}
-                        </button>
-                    )} */}
+                    <ThemeToggle />
                     <button
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700"

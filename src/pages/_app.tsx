@@ -1,6 +1,6 @@
-import { ThemeProvider } from 'next-themes'
 import type { AppProps } from 'next/app'
 import { useEffect, useState } from 'react'
+import { ThemeProvider } from '@/components/ThemeProvider'
 import '../styles/globals.css'
 
 export default function App({ Component, pageProps }: AppProps) {
