@@ -97,7 +97,7 @@ export default function Hero() {
                             Contact Me
                         </a>
                         <a
-                            href="/cv.pdf"
+                            href="https://drive.google.com/uc?export=download&id=1rrLiFC1PaWbj-_yIrKQq8HohToDll9pj"
                             download
                             className="bg-gray-800 hover:bg-gray-900 text-white px-6 py-3 rounded-lg font-medium transition-colors"
                         >
