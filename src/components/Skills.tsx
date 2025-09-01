@@ -54,7 +54,7 @@ export default function Skills() {
             <div className="container mx-auto px-4">
                 <h2 className="text-3xl font-bold mb-12 text-center">Technical Skills</h2>
 
-                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
                     {skills.map((category, index) => (
                         <div key={index} className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl hover:shadow-lg transition-shadow duration-300">
                             <h3 className="text-xl font-bold mb-4 text-blue-600">{category.name}</h3>

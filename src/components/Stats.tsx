@@ -29,13 +29,13 @@ export default function Stats() {
     ];
 
     return (
-        <section className="py-16 bg-blue-600 text-white">
+        <section className="py-16 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 text-white">
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                     {stats.map((stat, index) => (
                         <div key={index} className="text-center">
                             <div className="flex justify-center mb-4">
-                                <stat.icon size={40} className="text-blue-200" />
+                                <stat.icon size={40} className="text-white/80" />
                             </div>
                             <div className="text-3xl md:text-4xl font-bold mb-2">
                                 {stat.number}
@@ -43,7 +43,7 @@ export default function Stats() {
                             <div className="text-lg font-semibold mb-1">
                                 {stat.label}
                             </div>
-                            <div className="text-blue-200 text-sm">
+                            <div className="text-white/80 text-sm">
                                 {stat.description}
                             </div>
                         </div>
